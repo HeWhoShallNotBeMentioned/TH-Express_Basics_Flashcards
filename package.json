@@ -1,0 +1,14 @@
+{
+  "name": "express_basics2",
+  "version": "1.0.0",
+  "description": "flashcard application for learning express software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HeWhoShallNotBeMentioned",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
