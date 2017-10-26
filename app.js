@@ -1,6 +1,7 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 const colors = [
   'red',
   'orange',
@@ -33,6 +34,7 @@ app.get('/hello', (req, res)=> {
 });
 
 app.post('/hello', (req, res)=> {
+  console.log(req.body);
   res.render('hello');
 });
 
