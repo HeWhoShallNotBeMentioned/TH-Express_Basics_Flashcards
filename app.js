@@ -11,11 +11,11 @@ const colors = [
 ];
 
 const people = [
-  {first: "a", last: "a" },
-  {first: "b", last: "b" },
-  {first: "c", last: "c" },
-  {first: "d", last: "d"},
-  {first: "e", last: "e"}
+  {first: "a", last: "v" },
+  {first: "b", last: "w" },
+  {first: "c", last: "x" },
+  {first: "d", last: "y"},
+  {first: "e", last: "z"}
 ];
 
 app.set('view engine', 'pug');
