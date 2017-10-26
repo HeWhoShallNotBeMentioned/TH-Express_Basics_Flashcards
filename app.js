@@ -28,6 +28,14 @@ app.get('/cards', (req, res)=> {
   res.render('card', {prompt: "Who is buried in Grant's tomb?", colors});
 });
 
+app.get('/hello', (req, res)=> {
+  res.render('hello');
+});
+
+app.post('/hello', (req, res)=> {
+  res.render('hello');
+});
+
 app.get('/sandbox', (req, res)=> {
   res.render('sandbox', { colors, people});
 });
