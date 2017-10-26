@@ -2,12 +2,14 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 app.get('/', (req, res)=> {
-  res.send('<h1>My first Express application! With nodemon!</h1>');
+  res.render('index');
 });
 
-app.get('/hello', (req, res)=> {
-  res.send('<h1>Welcome, Javascript Developers</h1>');
+app.get('/cards', (req, res)=> {
+  res.render('card', {prompt: "Who is buried in Grant's tomb?", hint: "Think about whose tomb it is."});
 });
 
 app.listen(3001, () => {
