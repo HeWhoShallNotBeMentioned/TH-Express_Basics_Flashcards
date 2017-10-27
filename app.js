@@ -24,6 +24,16 @@ const people = [
 
 app.set('view engine', 'pug');
 
+app.use( (req, res, next) =>{
+  req.madeup = "passing a message";
+  next();
+});
+
+app.use((req, res, next) =>{
+  console.log(req.madeup);
+  next();
+});
+
 app.get('/', (req, res)=> {
   const name = req.cookies.username;
   if (name) {
