@@ -25,12 +25,14 @@ const people = [
 app.set('view engine', 'pug');
 
 app.use( (req, res, next) =>{
-  req.madeup = "passing a message";
-  next();
+  console.log("hello");
+  const err = new Error('Oh noes!');
+  err.status = 500;
+  next(err);
 });
 
 app.use((req, res, next) =>{
-  console.log(req.madeup);
+  console.log("world");
   next();
 });
 
@@ -69,6 +71,12 @@ app.post('/hello', (req, res)=> {
 
 app.get('/sandbox', (req, res)=> {
   res.render('sandbox', { colors, people});
+});
+
+app.use((err, req, res, next) => {
+  res.locals.error = err;
+  res.status(err.status);
+  res.render('error', err);
 });
 
 app.listen(3001, () => {
