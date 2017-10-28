@@ -28,7 +28,7 @@ app.use( (req, res, next) =>{
   console.log("hello");
   const err = new Error('Oh noes!');
   err.status = 500;
-  next(err);
+  next();
 });
 
 app.use((req, res, next) =>{
@@ -71,6 +71,12 @@ app.post('/hello', (req, res)=> {
 
 app.get('/sandbox', (req, res)=> {
   res.render('sandbox', { colors, people});
+});
+
+app.use((req, res, next)=> {
+  const err = new Error('Not found');
+  err.status = 404;
+  next(err);
 });
 
 app.use((err, req, res, next) => {
