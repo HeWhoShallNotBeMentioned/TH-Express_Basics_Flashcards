@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 const colors = [
   'red',
   'orange',
@@ -24,54 +25,16 @@ const people = [
 
 app.set('view engine', 'pug');
 
-app.use( (req, res, next) =>{
-  console.log("hello");
-  const err = new Error('Oh noes!');
-  err.status = 500;
-  next();
-});
+const mainRoutes = require('./routes/index');
+const cardRoutes = require('./routes/cards');
 
-app.use((req, res, next) =>{
-  console.log("world");
-  next();
-});
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
 
-app.get('/', (req, res)=> {
-  const name = req.cookies.username;
-  if (name) {
-    res.render('index', { name: name});
-  } else {
-    res.redirect('/hello');
-  }
-});
-
-app.post('/goodbye', (req, res) => {
-  const name = req.cookies.username;
-  res.clearCookie('username', { path: '/' });
-  res.redirect('/hello');
-});
-
-app.get('/cards', (req, res)=> {
-  res.render('card', {prompt: "Who is buried in Grant's tomb?", colors});
-});
-
-app.get('/hello', (req, res)=> {
-  const name = req.cookies.username;
-  if (name) {
-    res.redirect('/');
-  } else {
-    res.render('hello');
-  }
-});
-
-app.post('/hello', (req, res)=> {
-  res.cookie('username', req.body.username);
-  res.redirect('/');
-});
-
-app.get('/sandbox', (req, res)=> {
-  res.render('sandbox', { colors, people});
-});
+// app.get('/cards', (req, res)=> {
+//   res.render('card', {prompt: "Who is buried in Grant's tomb?"});
+//   console.log("in cards / get");
+// });
 
 app.use((req, res, next)=> {
   const err = new Error('Not found');
