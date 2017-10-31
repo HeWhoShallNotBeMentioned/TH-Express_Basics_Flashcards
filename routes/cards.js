@@ -16,6 +16,7 @@ router.get('/:id', (req, res)=> {
   if (!side) {
     return res.redirect(`/cards/${id}?side=question`);
   }
+
   const name = req.cookies.username;
   const text = cards[id][side];
   console.log(side);
@@ -31,6 +32,7 @@ router.get('/:id', (req, res)=> {
       templateData.sideToShow = 'question';
       templateData.sideToShowDisplay = "Question";
   }
+
   res.render('card', templateData);
 });
 
