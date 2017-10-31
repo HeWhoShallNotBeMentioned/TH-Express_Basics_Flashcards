@@ -6,23 +6,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const colors = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'blue',
-  'purple'
-];
-
-const people = [
-  {first: "a", last: "v" },
-  {first: "b", last: "w" },
-  {first: "c", last: "x" },
-  {first: "d", last: "y"},
-  {first: "e", last: "z"}
-];
-
 app.set('view engine', 'pug');
 
 const mainRoutes = require('./routes/index');
